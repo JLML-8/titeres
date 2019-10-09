@@ -1,7 +1,7 @@
 @extends('template.main')
 
 @section('content')
-<h1>Voluntarios registrados</h1>
+<h1>Voluntario registrado con ID: {{$voluntario->id}}</h1>
 <table class="table table-striped table-dark">
     <thead class="thead-light">
         <tr>
@@ -11,11 +11,10 @@
             <th>Edad</th>
             <th>Celular</th>
             <th>Email</th>
-            <th>Acciones</th>
+            <th>Accion</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($voluntarios as $voluntario)
         <tr>
             <td>{{$voluntario->id}}</td>
             <td>{{$voluntario->Foto}}</td>
@@ -28,13 +27,12 @@
                 <form method="post" action="{{url('/voluntarios/'.$voluntario->id)  }}">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
-                <button type="submit" onclick="return confirm('¿Esta seguro de querer borrar el registro?');" class="btn btn-primary">Borrar</button>
-                <a href="{{route('voluntarios.show', $voluntario->id)}}" class="btn btn-success">Detalle</a>
+                <button type="submit" onclick="return confirm('¿Esta seguro de querer borrar el registro?');" class="btn btn-outline-danger">Borrar</button>
+                
                 </form>
             </td>
-            
+
         </tr>
-        @endforeach
     </tbody>
 </table>
 @endsection

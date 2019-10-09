@@ -58,9 +58,10 @@ class VoluntariosController extends Controller
      * @param  \App\Voluntarios  $voluntarios
      * @return \Illuminate\Http\Response
      */
-    public function show(Voluntarios $voluntarios)
+    public function show(Voluntarios $voluntario)
     {
-        //
+        //dd($voluntario);
+        return view('voluntarios.show', compact('voluntario'));
     }
 
     /**
@@ -69,9 +70,10 @@ class VoluntariosController extends Controller
      * @param  \App\Voluntarios  $voluntarios
      * @return \Illuminate\Http\Response
      */
-    public function edit(Voluntarios $voluntarios)
+    public function edit(Voluntarios $voluntario)
     {
         //
+        return view('voluntarios.create', compact('voluntario')); 
     }
 
     /**
@@ -81,9 +83,16 @@ class VoluntariosController extends Controller
      * @param  \App\Voluntarios  $voluntarios
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Voluntarios $voluntarios)
+    public function update(Request $request, Voluntarios $voluntario)
     {
         //
+        $voluntario->Nombre=$request->Nombre;
+        $voluntario->Edad=$request->Edad;
+        $voluntario->Correo=$request->Correo;
+        $voluntario->Celular=$request->Celular;
+        $voluntario->save(); 
+
+        return redirect()->route('voluntarios.show', $voluntario->id);
     }
 
     /**

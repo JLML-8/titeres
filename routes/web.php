@@ -19,3 +19,5 @@ Route::get('/', function () {
 
 //Route::get('/voluntarios/create', 'VoluntariosController@create');
 Route::resource('voluntarios', 'VoluntariosController');
+Route::resource('horario', 'HorarioController');
+Route::resource('evento', 'EventoController');

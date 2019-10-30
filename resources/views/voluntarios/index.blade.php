@@ -29,6 +29,7 @@
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <button type="submit" onclick="return confirm('¿Esta seguro de querer borrar el registro?');" class="btn btn-primary">Borrar</button>
+                <br>
                 <a href="{{route('voluntarios.show', $voluntario->id)}}" class="btn btn-success">Detalle</a>
                 </form>
             </td>

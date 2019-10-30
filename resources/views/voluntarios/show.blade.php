@@ -35,4 +35,13 @@
         </tr>
     </tbody>
 </table>
+
+<ul>
+    @foreach($voluntario->horarios as $horario)
+    <h3>Horario</h3>
+    <li>Dia: {{$horario->dia}}</li>
+    <li>Hora de Inicio: {{$horario->horaInicio}}</li>
+    <li>Hora de Fin: {{$horario->horaFin}}</li>
+    @endforeach
+</ul>
 @endsection

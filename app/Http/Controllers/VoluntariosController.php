@@ -15,7 +15,7 @@ class VoluntariosController extends Controller
     public function index()
     {
         //
-        $datos['voluntarios']=Voluntarios::paginate(5);
+        $datos['voluntarios']=Voluntarios::all();
         return view('voluntarios.index', $datos);
     }
 
@@ -41,6 +41,14 @@ class VoluntariosController extends Controller
     {
         //
         //$datosVoluntario=request()->all();
+
+        $request->validate([
+            'Nombre' => 'required|min:5|max:20',
+            'Edad' => 'required|min:1|max:3',
+            'Celular' => 'required|min:8|max:13',
+            'Correo' => 'required|min:7|max:40',
+            'Foto' => 'required',
+        ]);
         $datosVoluntario=request()->except('_token');
 
         if($request->hasFile('Foto'))
@@ -48,7 +56,7 @@ class VoluntariosController extends Controller
             $datosVoluntario['Foto']=$request->file('Foto')->store('uploads', 'public');
         }
         Voluntarios::insert($datosVoluntario);
-        $datos['voluntarios']=Voluntarios::paginate(5);
+        $datos['voluntarios']=Voluntarios::all();
         return view('voluntarios.index', $datos);
     }
 
@@ -86,6 +94,14 @@ class VoluntariosController extends Controller
     public function update(Request $request, Voluntarios $voluntario)
     {
         //
+        $request->validate([
+            'Nombre' => 'required|min:5|max:20',
+            'Edad' => 'required|min:1|max:3',
+            'Celular' => 'required|min:8|max:13',
+            'Correo' => 'required|min:7|max:40',
+            'Foto' => 'required',
+        ]);
+        
         $voluntario->Nombre=$request->Nombre;
         $voluntario->Edad=$request->Edad;
         $voluntario->Correo=$request->Correo;

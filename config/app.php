@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'El arte de los titeres'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Mexico_City',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -224,7 +225,8 @@ return [
         'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
+        'View' => Illuminate\Support\Facades\View::class,	
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

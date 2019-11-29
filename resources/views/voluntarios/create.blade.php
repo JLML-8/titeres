@@ -30,7 +30,7 @@ text-align:right;
 <!--<form action="{{route('voluntarios.update', $voluntario->id)}}" method="post" enctype="multipart/form-data">-->
 {!! Form::Model($voluntario, ['route' => ['voluntarios.update', $voluntario->id], 'method' => 'PATCH'])!!}
 @else
-{!! Form::open(['route' => 'voluntarios.store'])!!}
+{!! Form::open(['route' => 'voluntarios.store', 'files' => true])!!}
 @endif
 {{ csrf_field() }}
 <!--<label for="Nombre" size="20">{{'Nombre'}}</label>-->

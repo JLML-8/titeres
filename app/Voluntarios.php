@@ -14,9 +14,23 @@ class Voluntarios extends Model
 
      public function eventos()
     {
-        return $this->belongsToMany(Evento::class)->whitPivot('contacto');
-
+        return $this->belongsToMany(Evento::class, 'evento_voluntario', 'voluntario_id', 'evento_id')->whitPivot('contacto');
     }
 
+    public function archivos()
+    {
+        return $this->morphMany(Archivo::class, 'modelo');
+    }
+
+    public function setCorreoAttribute($value)
+    {
+        $this->attributes['Correo'] = strtolower($value);
+    }
+
+    public function getNombreAttribute($value)
+    {
+        return ucwords($value);
+    }
+    
 
 }

@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(App\Voluntarios::class);
+        //$this->call(App\Voluntarios::class);
         factory(App\Voluntarios::class, 100)->create();
     }
 }

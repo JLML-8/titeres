@@ -12,4 +12,5 @@ class Horario extends Model
     {
         return $this->belongsTo(Voluntarios::class, 'voluntario_id');
     }
+    
 }

@@ -16,14 +16,15 @@ class CreateEventosTable extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre_evento');
-            $table->string('descripcion');
-            $table->$table->boolean('contacto')->default(0);
+            $table->text('descripcion');
+            $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::create('evento_voluntario', function (Blueprint $table) {
             $table->unsignedBigInteger('voluntario_id');
             $table->unsignedBigInteger('evento_id');
+            $table->boolean('contacto')->default(0);
 
 
             $table->foreign('voluntario_id')

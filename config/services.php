@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => '1277424019134735',
+        'client_secret' => 'dc251f5372506f6799ef335806ecb21c', 
+        'redirect' => 'http://titeres.test/auth/facebook/callback'
+
+    ]
+
 ];

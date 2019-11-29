@@ -7,7 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Voluntarios::class, function (Faker $faker) {
     return [
-        //
         'Nombre' => $faker->name,
         'Correo' => $faker->unique()->safeEmail,
         'Edad' => $faker->numberBetween(14, 50), 

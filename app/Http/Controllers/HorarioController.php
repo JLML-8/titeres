@@ -16,8 +16,8 @@ class HorarioController extends Controller
     public function index()
     {
         //
-        $datos=Horario::all();
-        return view('horarios.horarioShow', compact('datos'));
+        $horarios=Horario::paginate(5);
+        return view('horarios.horarioShow', compact('horarios'));
     }
 
     /**
@@ -40,10 +40,16 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'dia' => 'required|min:5|max:15',
+            'horaInicio' => 'required',
+            'horaFin' => 'required',
+        ]);
+
         $datoHorario=request()->except('_token');
         Horario::insert($datoHorario);
-        $datos['voluntarios']=Voluntarios::paginate(5);
-        return view('voluntarios.index', $datos);
+        $datos['horarios']=Horario::paginate(5);
+        return view('horarios.horarioShow', $datos);
     }
 
     /**
@@ -87,8 +93,10 @@ class HorarioController extends Controller
      * @param  \App\Horario  $horario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Horario $horario)
+    public function destroy($id)
     {
         //
+        Horario::destroy($id);
+        return redirect('horario');
     }
 }

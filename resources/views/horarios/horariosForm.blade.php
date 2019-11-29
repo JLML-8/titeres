@@ -15,7 +15,7 @@ text-align:right;
 @section('content')
 <br><br><br>
 
-<h3>Registrarse como voluntario</h3>
+<h3>Registrarse un horario</h3>
 <br><br>
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -49,7 +49,6 @@ text-align:right;
 {!! Form::label('id','ID') !!}
 {!! Form::select('voluntario_id', $voluntarios, null, ['class' => 'form-control']) !!}
 <br>
-<input type="submit" value="Agregar">
-<button type="button" class="btn btn-link">Link</button>
+<input type="submit" value="Agregar" class="btn btn-success">
 </form>
 @endsection

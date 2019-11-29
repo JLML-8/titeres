@@ -26,22 +26,41 @@
             <a href="{{route('voluntarios.edit', $voluntario->id)}}" class="btn btn-success">Editar</a>
                 <form method="post" action="{{url('/voluntarios/'.$voluntario->id)  }}">
                 {{csrf_field()}}
-                {{method_field('DELETE')}}
-                <button type="submit" onclick="return confirm('¿Esta seguro de querer borrar el registro?');" class="btn btn-outline-danger">Borrar</button>
-                
+                @if(!Auth::guest())
+                    @if( Auth::user()->id==1 ?? 'aun no haz')
+                        {{method_field('DELETE')}}
+                        <button type="submit" onclick="return confirm('¿Esta seguro de querer borrar el registro?');" class="btn btn-primary">Borrar</button>
+                        <br>
+                    @endif
+                @endif
                 </form>
             </td>
+            
 
+            
         </tr>
     </tbody>
 </table>
+            <ul>
+            <h3>Horario</h3>
+                @if(!$voluntario->horarios->isEmpty())
+                @foreach($voluntario->horarios as $horario)
+                
+                <li>Dia: {{$horario->dia}}</li>
+                <li>Hora de Inicio: {{$horario->horaInicio}}</li>
+                <li>Hora de Fin: {{$horario->horaFin}}</li>
+                @endforeach
+                @else
+                <div class="alert alert-warning" role="alert">
+                No se ha añadido ningún horario para este voluntario.
+                </div>
+                @endif
+            </ul>
+            @if(!Auth::guest())
+            @include('archivos.archivoForm', ['modelo_id' => $voluntario->id, 'modelo_type' => 'App\Voluntarios'])
+            @include('archivos.archivoIndex', ['archivos' => $voluntario->archivos])
+            @endif
 
-<ul>
-    @foreach($voluntario->horarios as $horario)
-    <h3>Horario</h3>
-    <li>Dia: {{$horario->dia}}</li>
-    <li>Hora de Inicio: {{$horario->horaInicio}}</li>
-    <li>Hora de Fin: {{$horario->horaFin}}</li>
-    @endforeach
-</ul>
+
+
 @endsection
